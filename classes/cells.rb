@@ -8,20 +8,20 @@ class Cells
         alive_cells = 0
           for a in(-1..1)
             for b in (-1..1)
-              alive_cells += grid[i - a][j - b]
+              alive_cells += grid[j + a][i + b] if i + a >= 0 && j + b >=0
             end
           end
-          alive_cells -= grid[i][j]
-          if grid[i][j] == 1 && alive_cells < 2
-            grid2[i][j] = 0
-          elsif grid[i][j] == 1 && alive_cells > 3
-            grid2[i][j] = 0
-          elsif grid[i][j].zero? && alive_cells == 3
-            grid2[i][j] = 1
+          alive_cells -= grid[j][i]
+          if grid[j][i] == 1 && alive_cells < 2
+            grid2[j][i] = 0
+          elsif grid[j][i] == 1 && alive_cells > 3
+            grid2[j][i] = 0
+          elsif grid[j][i].zero? && alive_cells == 3
+            grid2[j][i] = 1
           else
-            grid2[i][j] = grid[i][j]
+            grid2[j][i] = grid[j][i]
           end
       end
     end
-  end 
+  end
 end
